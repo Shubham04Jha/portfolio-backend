@@ -11,7 +11,7 @@ app.use(express.json());
 
 const map = new Map<string, number>();
 
-app.get('/codingActivity',async (req,res)=>{
+app.get('/coding-activity',async (req,res)=>{
     const data  = await codingActivity(); // data: {date: string, count: number}
     res.json({data});
 })

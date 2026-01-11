@@ -1,5 +1,3 @@
-const token = process.env.GITHUB_AUTH_TOKEN;
-
 const fetchGithub=async ()=>{
     const to = new Date();
     const from = new Date();
@@ -7,7 +5,7 @@ const fetchGithub=async ()=>{
     const response = await fetch('https://api.github.com/graphql',{
         method:'POST',
         headers: {
-            "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+            "Authorization": `Bearer ${process.env.GITHUB_AUTH_TOKEN}`,
             "Content-Type": "application/json",
         },
         body:JSON.stringify({
@@ -32,8 +30,8 @@ const fetchGithub=async ()=>{
             `
         })
     })
-    const data = await response.json();
-    return data;
+    const res = await response.json();
+    return res.data;
 }
 
 export const getGithubActivity = async(map: Map<string, number>)=>{
