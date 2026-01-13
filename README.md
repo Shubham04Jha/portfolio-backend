@@ -52,12 +52,13 @@ while github just gives it to you.
 
 
 # todos
-2) cache response. (once per 30 mins should be fine ig. if I get the continuous traffic then I might consider reducing it) (done)
-3) secret-header key not working... I mean it works when /api is between but why was I able to access earlier?
+4) Reach-out api.
 
 
 # done
 1) update cors policy after hosting frontend. (not needed)
+2) cache response. (once per 30 mins should be fine ig. if I get the continuous traffic then I might consider reducing it) (done)
+3) secret-header key not working... I mean it works when /api is between but why was I able to access earlier? (XXX)
 
 # important
 check the type of coding activity required by the frontend.
