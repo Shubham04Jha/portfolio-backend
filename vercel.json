@@ -6,7 +6,8 @@
         {
           "key": "Cache-Control",
           "value": "public, s-maxage=1800, stale-while-revalidate=10"
-        }
+        },
+        { "key": "Access-Control-Allow-Origin", "value": "true" }
       ]
     }
   ]
