@@ -5,7 +5,7 @@ import main from "../src/codingCalendar/main.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     try{
-        // const data = await globalInFlightPromise;
+        if (req.method === 'OPTIONS') return res.status(204).end();
         const data = await main();
         // res.setHeader("Cache-Control", "public, s-maxage=1800, stale-while-revalidate=10");
         res.status(200).json({data});
