@@ -1,3 +1,41 @@
+### CDN Caching Verification
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>Serverless Function Invocation: 40</strong><br/>
+      <img width="630" height="418" src="https://github.com/user-attachments/assets/bb7ccf25-53bd-4f09-b3ba-2d231a6ddd39" />
+    </td>
+    <td align="center">
+      <strong>Serverless Function Invocations: 40</strong><br/>
+      <img width="599" height="390" alt="image" src="https://github.com/user-attachments/assets/5857c317-0c99-42da-bb7b-1ff59c7ca7ec" />
+    </td>
+  </tr>
+</table>
+
+**Observation:**  
+Function invocations are significantly lower than edge responses because the CDN caches the response for 30 minutes. During this window, the serverless function and the external API are invoked only once, while subsequent requests are served directly from the edge cache.
+
+
+putting this header in response header: "Cache-Control: public, s-maxage=1800, stale-while-revalidate=10"
+
+Behavior:
+
+The first request within a 30-minute window invokes the Serverless Function.
+The function calls the external API exactly once.
+The response is cached at the Vercel CDN (edge).
+All subsequent requests during the next 30 minutes are served directly from the edge cache.
+The origin function is not re-invoked during this period.
+After TTL expiry, a single revalidation request refreshes the cache.
+
+Impact:
+Layer	Calls per 30 min window, 
+Browser Requests	N, 
+Vercel Edge Responses	N, 
+Serverless Function Invocations	1, 
+External API Calls	1
+
+
 # notes
 
 the endpoints were made to follow UTC date format. 
