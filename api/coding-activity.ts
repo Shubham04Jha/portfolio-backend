@@ -14,9 +14,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
     const now = Date.now();
     if (cachedData && now - cachedAt < CACHE_TTL) {
-        return res.status(200).json({data: cachedData,
-            header: req.headers
-        });
+        return res.status(200).json({data: cachedData});
     }
     if(globalInFlightPromise){
         const data = await globalInFlightPromise;
@@ -30,8 +28,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })();
     try{
         const data = await globalInFlightPromise;
-        res.status(200).json({data,
-            header: req.headers});
+        res.status(200).json({data});
     }catch(err){
         res.status(500).json({error: "Failed to compute activity"});
     }finally{
