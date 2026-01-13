@@ -9,8 +9,8 @@ let globalInFlightPromise: Promise<any>|null = null;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
     const reqVerificationHeader = req.headers['verification-header'];
-    if(!reqVerificationHeader||reqVerificationHeader!=process.env.SECRET_HEADER_KEY){
-        return res.status(401).json({message:"invalid requests"});
+    if(!reqVerificationHeader||reqVerificationHeader!=process.env.VERIFICATION_HEADER){
+        return res.status(401).json({message:"invalid request"});
     }
     const now = Date.now();
     if (cachedData && now - cachedAt < CACHE_TTL) {
