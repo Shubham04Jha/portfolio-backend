@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b",
-    "start": "node dist/src/index.js",
-    "dev": "pnpm build && pnpm start"
+    "build": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
