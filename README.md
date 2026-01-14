@@ -51,24 +51,29 @@ while github just gives it to you.
 
 
 
+
+
+# purpose
+act as a middleman for portfolio frontend.
+1) Mails me the lets connect messages.
+2) Fetch and aggregate coding activity
+
+
+
+
 # todos
-4) Reach-out api.
 
 
 # done
 1) update cors policy after hosting frontend. (not needed)
 2) cache response. (once per 30 mins should be fine ig. if I get the continuous traffic then I might consider reducing it) (done)
 3) secret-header key not working... I mean it works when /api is between but why was I able to access earlier? (XXX)
-
+4) Reach-out api. (done)
 # important
 check the type of coding activity required by the frontend.
 (thinking of making it just date and count arrays and let the frontend decide on the levels. 
-otherwise if incase in the future I decide to change I would have to change in both repos.)
+otherwise if incase in the future I decide to change I would have to change in both repos.) (done)
 
-# purpose
-act as a middleman for portfolio frontend.
-1) Mails me the lets connect messages.
-2) Fetch and aggregate coding activity
 
 
 # observations

@@ -10,6 +10,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         res.setHeader("Cache-Control", "public, s-maxage=1800, stale-while-revalidate=10");
         res.status(200).json({data});
     }catch(err){
+        console.log('error caught');
+        console.log(err);
         res.status(500).json({error: "Failed to compute activity"});
     }
 }
