@@ -1,5 +1,6 @@
 import { getCodeForcesActivity } from "./getCodeforces.js";
 import { getGithubActivity } from "./getGithub.js";
+import { getLeetcodeActivity } from "./getLeetcode.js";
 
 const getData = (map: Map<string, number>)=>{
     const data: {date: string,count: number}[] = [];
@@ -31,6 +32,7 @@ const main = async ()=>{
     const map = new Map<string, number>();
     await getCodeForcesActivity(map);
     await getGithubActivity(map);
+    await getLeetcodeActivity(map);
     return getData(map);
 }
 export default main;

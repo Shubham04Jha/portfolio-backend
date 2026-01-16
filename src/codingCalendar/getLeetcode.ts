@@ -28,7 +28,7 @@ const getLeetcodeData = async (username: string, year?: number): Promise<LeetCod
     return (await response.json()).data.matchedUser.userCalendar;
 }
 
-export const getLeetcodeActivity = async (all=false, map: Map<string,number>)=>{
+export const getLeetcodeActivity = async (map: Map<string,number>,all: boolean|undefined=false)=>{
     const username = process.env.LEETCODE_USERNAME!
     const response =  await getLeetcodeData(username);
     const years = response.activeYears;
