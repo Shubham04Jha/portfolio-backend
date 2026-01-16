@@ -1,12 +1,11 @@
 import { getCodeForcesActivity } from "./getCodeforces.js";
 import { getGithubActivity } from "./getGithub.js";
+import { getLeetcodeActivity } from "./getLeetcode.js";
+import { handleApiError } from "./utils/handleApiError.js";
+import { formatter } from "./utils/localeDateFormatter.js";
 
 const getData = (map: Map<string, number>)=>{
     const data: {date: string,count: number}[] = [];
-    const formatter = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Asia/Kolkata"
-    });
-
     const d = new Date();
     const todayKey = formatter.format(d);
     d.setFullYear(d.getFullYear() - 1);
@@ -29,8 +28,12 @@ const getData = (map: Map<string, number>)=>{
 
 const main = async ()=>{
     const map = new Map<string, number>();
-    await getCodeForcesActivity(map);
-    await getGithubActivity(map);
+    await Promise.all([
+        getCodeForcesActivity(map).catch(err => handleApiError({ serviceName: "Codeforces", error: err })),
+        getGithubActivity(map).catch(err => handleApiError({ serviceName: "GitHub", error: err })),
+        getLeetcodeActivity(map).catch(err => handleApiError({ serviceName: "LeetCode", error: err })),
+    ]);
+
     return getData(map);
 }
 export default main;

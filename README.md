@@ -69,6 +69,7 @@ act as a middleman for portfolio frontend.
 2) cache response. (once per 30 mins should be fine ig. if I get the continuous traffic then I might consider reducing it) (done)
 3) secret-header key not working... I mean it works when /api is between but why was I able to access earlier? (XXX)
 4) Reach-out api. (done)
+5) leetcode activity (done).
 # important
 check the type of coding activity required by the frontend.
 (thinking of making it just date and count arrays and let the frontend decide on the levels. 
