@@ -21,15 +21,18 @@ const getLeetcodeData = async (username: string, year?: number): Promise<LeetCod
         method:'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+            operationName: "userProfileCalendar",
             query: calendarQuery,
             variables: year ? { username, year } : { username }
         }),
     });
+    console.log(response);
     return (await response.json()).data.matchedUser.userCalendar;
 }
 
 export const getLeetcodeActivity = async (map: Map<string,number>,all: boolean|undefined=false)=>{
     const username = process.env.LEETCODE_USERNAME!
+    if(!username) throw new Error("LEETCODE_USERNAME not set in environment variables!");
     const response =  await getLeetcodeData(username);
     const years = response.activeYears;
     if(all){
